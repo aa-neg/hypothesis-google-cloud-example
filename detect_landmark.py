@@ -1,6 +1,13 @@
+import argparse
+
 def outputLandmarks(landmarks):
-    for landmark in landmarks:
-        print(landmark.description)
+    
+    if landmarks:
+        print('Landmarks found: \n')
+        for landmark in landmarks:
+            print(landmark.description)
+    else:
+        print('No landmarks found :(')
 
 def identifyLandmarkLocal(path):
     from google.cloud import vision_client
@@ -13,9 +20,12 @@ def identifyLandmarkLocal(path):
 
 
 def identifyLandmark(cloudUri):
-    from google.cloud import vision_client
+    from google.cloud import vision 
+
+    print('Connecting to api...')
     visionClient = vision.Client()
 
+    print('Processing image source ' + cloudUri + ' ...')
     image = visionClient.image(source_uri=cloudUri)
 
     return image.detect_landmarks()

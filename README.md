@@ -38,13 +38,8 @@ Install
 pip install -r requirements.txt
 ```
 
-Upload image
-
-```bash
-gsutil cp some-local-image.jpg gs://<bucket-name>/some-local-image.jpg
-```
-
 Run call
 
 ```bash
-python detect_landmark.py gs://<bucket-name>/some-local-image.jpg
+sh run-demo.sh -bn <bucket name here> -bp <base path to image> -fn <image file name>
+```
